@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <canvas id="myCanvas" width="600" height="600" style="border: 1px solid red;"></canvas>
+<script>
+    let c=document.getElementById("myCanvas");
+let ctx = c.getContext("2d");
+   ctx.beginPath();
+
+// krov
+ctx.moveTo(300, 200);
+ctx.lineTo(400, 300);
+ctx.lineTo(200, 300);
+ctx.lineTo(300, 200);
+
+
+// kuća
+ctx.moveTo(200, 300);
+ctx.lineTo(200, 450);
+ctx.lineTo(400, 450);
+ctx.lineTo(400, 300);
+
+
+// vrata
+ctx.moveTo(280, 450);
+ctx.lineTo(280, 370);
+ctx.lineTo(320, 370);
+ctx.lineTo(320, 450);
+
+
+ctx.stroke();
+
+</script>
+</body>
+</html>
