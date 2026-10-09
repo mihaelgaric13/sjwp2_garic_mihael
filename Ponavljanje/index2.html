@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styl2.css">
+    <title>Skriptni jezici</title>
+
+</head>
+<body>
+
+<nav class="meni">
+    <a href="indexpoc.html" target="_blank">Početna</a>
+    <a href="indexnama.html" target="_blank">O nama</a>
+    <a href="indexkon.html" target="_blank">Kontakt</a>
+</nav>
+
+    <h1>HTML, CSS, Canvas i SVG</h1>
+    <p>
+    <b>Canvas</b> je HTML5 element koji pomoću JavaScripta-a,omogućava dinamičko iscrtavanje različitih oblika,
+</p>
+
+<p>
+    Najčešće uporabe platna su:
+</p>
+
+<ul>
+    <li>crtanje grafova</li>
+    <li>animiranje igara</li>
+    <li>kompozicija slike</li>
+</ul>
+
+
+<p>
+    <b>SVG</b> grafika ne gubi kvalitetu prilikom zumiranja.
+</p>
+<h3>Usporedba SVG-a i Canvasa</h3>
+<table border="1">
+    <tr>
+        <th>SVG</th>
+        <th>HTML Canvas</th>
+    </tr>
+    <tr>
+        <td>Temelji se na vektorima</td>
+        <td>Temelji se na pikselima</td>
+    </tr>
+    <tr>
+        <td>Dobro se skalira</td>
+        <td>Gubi kvalitetu pri povećanju</td>
+    </tr>
+</table>
+<br>
+<table border="1" width="50%">
+    <tr>
+        <th>Ime</th>
+        <td>Marko</td>
+    </tr>
+    <tr>
+        <th rowspan="2">Telefon</th>
+        <td>555-1234</td>
+    </tr>
+    <tr>
+        <td>555-8745</td>
+    </tr>
+</table>
+<br>
+<img src="https://pixel77.com/wp-content/uploads/2018/10/raster-vs-vector-3-scaled.webp" alt="Vektor slika" >
+
+<h2>Primjer SVG-a i Canvasa</h2>
+
+<h3>SVG slika</h3>
+
+<svg width="240" height="240" viewBox="0 0 240 240">
+
+  
+    <rect width="240" height="240" fill="#A5DDF2"/>
+
+    
+    <rect x="50" y="84" width="18" height="33" fill="#FFD32A"/>
+    <rect x="172" y="84" width="18" height="33" fill="#FFD32A"/>
+
+    
+    <rect x="66" y="45" width="108" height="118" fill="#FFF9D9"/>
+
+    
+    <rect x="66" y="45" width="108" height="20" fill="#2457A7"/>
+
+    
+    <circle cx="92" cy="91" r="10" fill="#2457A7"/>
+    <circle cx="148" cy="91" r="10" fill="#2457A7"/>
+
+    
+    <polygon points="120,103 110,118 130,118" fill="#E87835"/>
+
+    
+    <path d="M82 127 L158 127
+             A38 28 0 0 1 82 127 Z"
+          fill="#F56B87"/>
+
+    
+
+    
+    <polygon points="83,174 110,187 83,200" fill="#2457A7"/>
+    <polygon points="157,174 130,187 157,200" fill="#2457A7"/>
+    <circle cx="120" cy="187" r="10" fill="#FFD32A"/>
+</svg>
+
+<h3>Canvas slika</h3>
+
+<canvas id="robot" width="240" height="240"
+        style="border: 1px solid #ddd;">
+</canvas>
+
+<script>
+const canvas = document.getElementById("robot");
+const ctx = canvas.getContext("2d");
+
+// Pozadina
+ctx.fillStyle = "#A5DDF2";
+ctx.fillRect(0, 0, 240, 240);
+
+// Uši
+ctx.fillStyle = "#FFD32A";
+ctx.fillRect(50, 84, 18, 33);
+ctx.fillRect(172, 84, 18, 33);
+
+// Glava
+ctx.fillStyle = "#FFF9D9";
+ctx.fillRect(66, 45, 108, 118);
+
+// Kapa
+ctx.fillStyle = "#2457A7";
+ctx.fillRect(66, 45, 108, 20);
+
+// Oči
+ctx.fillStyle = "#2457A7";
+
+ctx.beginPath();
+ctx.arc(92, 91, 10, 0, Math.PI * 2);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(148, 91, 10, 0, Math.PI * 2);
+ctx.fill();
+
+// Nos
+ctx.fillStyle = "#E87835";
+ctx.beginPath();
+ctx.moveTo(120, 103);
+ctx.lineTo(110, 118);
+ctx.lineTo(130, 118);
+ctx.closePath();
+ctx.fill();
+
+// Usta
+ctx.fillStyle = "#F56B87";
+ctx.beginPath();
+ctx.moveTo(82, 127);
+ctx.lineTo(158, 127);
+ctx.arc(120, 120, 38, 0, Math.PI);
+ctx.closePath();
+ctx.fill();
+
+// lijeva
+ctx.fillStyle = "#2457A7";
+ctx.beginPath();
+ctx.moveTo(83, 174);
+ctx.lineTo(110, 187);
+ctx.lineTo(83, 200);
+ctx.closePath();
+ctx.fill();
+
+//desna 
+ctx.beginPath();
+ctx.moveTo(157, 174);
+ctx.lineTo(130, 187);
+ctx.lineTo(157, 200);
+ctx.closePath();
+ctx.fill();
+
+//sredina masne
+ctx.fillStyle = "#FFD32A";
+ctx.beginPath();
+ctx.arc(120, 187, 10, 0, Math.PI * 2);
+ctx.fill();
+</script>
+
+<h2>Kontakt forma</h2>
+
+<form action="forma.html" method="get" class="kontakt-forma">
+
+    <label for="ime">Ime i prezime:</label>
+    <input type="text" id="ime" name="ime" required>
+
+    <label for="email">E-mail adresa:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="datum">Datum:</label>
+    <input type="date" id="datum" name="datum" required>
+
+    <button type="submit">Pošalji</button>
+    <button type="reset">Resetiraj</button>
+
+</form>
+</body>
+</html>
