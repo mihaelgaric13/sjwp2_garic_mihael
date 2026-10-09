@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styl.css">
+    <title>Skriptni jezici</title>
+</head>
+<body>
+
+<nav class="meni">
+    <a href="indexpoc.html" target="_blank">Početna</a>
+    <a href="indexnama.html" target="_blank">O nama</a>
+    <a href="indexkon.html" target="_blank">Kontakt</a>
+</nav>
+
+    <h1>Ponavljanje Canvas i SVG</h1>
+
+    <p><i>Canvas</i> je oznaka (tag) HTML5 standarda namijenjena crtanju. <br>
+    Canvas je 2D crtaća platforma unutar web preglednika, a koristi JavaScript i HTML. <br>
+Upotrebom JavaScript-a se može pristupiti čitavom setu funkcija za crtanje linija, pravokutnika, lukova, crta, teksta … <br>
+On nema vlastiti sadržaj, a od parametara ima samo dimenzije.
+</p> 
+<ul>
+    <li>Canvas API (API - Application Programming Interface - aplikacijsko programsko sučelje) osigurava alate za crtanje grafike putem JavaScript-a i HTML (canvas) elementa. </li>
+    <br>
+    <li>Canvas API je uglavnom namijenjen 2D crtanju, iako postoji mogućnost rada i sa 3D grafikom preko  WebGL API –ja </li>
+    <br>
+    <li>Crtanje grafike s pomoću oznake (canvas) kombinira poznavanje HTML-a, CSS-a i JavaScripta, pa ćemo njega učiti sljedećem poglavlju. </li>
+    <br>
+</ul>
+<hr>
+<p><b>SVG</b>(Scalable Vector Graphics) većinom je manje težine u usporedbi sa Bitmap rasterskom slikom, koja posjeduje otprilike iste rezoluciju i grafički prikaz. <br>
+Uključivanje SVG-a u HTML dokument omogućava naknadno stiliziranje grafike putem CSS-a, ali i manipulaciju JavaScript-om. <br>
+Tako možemo promijeniti svojstva, kao što su: boja pozadine, teksta, okvira, na isti način kao i za bilo koji HTML element. <br>
+Zbog toga je omogućeno i animirati sve SVG objekte preko JavaScript biblioteke kao što je jQuery. 
+</p>
+<hr>
+<h3>Usporedba SVG-a i Canvasa</h3>
+<table>
+<tr>
+    <td>Category</td>
+    <td>canvas</td>
+    <td>SVG</td>
+</tr>
+<tr>
+    <td>Suporting elements</td>
+    <td>Bitmap,based on pixels</td>
+    <td>Vector illustration,based oh graphic elements</td>
+</tr>
+<tr>
+    <td >Operation object</td>
+    <td>Single HTML element </td>
+    <td>Various graphic elements</td>
+</tr>
+<tr>
+    <td >Driver</td>
+    <td>JavaScript and other script driven</td>
+    <td>Script or CSS driven</td>
+</tr>
+</table>
+<br>
+<table class="table1">
+    <tr>
+        <th>Mjesec</th>
+        <th>Ušteda</th>
+        <th>Ušteda za blagdane!</th>
+    </tr>
+    <tr>
+        <td>Siječanj</td>
+        <td>100$</td>
+        <td rowspan="2">50$</td>
+    </tr>
+    <tr>
+        <td>Veljalča</td>
+        <td>80$</td>
+    </tr>
+</table>
+<br>
+<img src="vector.png" alt="Vector">
+<br>
+
+<h2>Primjer SVG-a i Canvasa</h2>
+<svg width="480" height="454" viewBox="0 0 480 454">
+
+    
+    <rect width="480" height="454" fill="#87ceeb"/>
+
+    
+    <circle cx="98" cy="103" r="39" fill="#ffcc22"/>
+
+    
+    <circle cx="330" cy="90" r="38" fill="white"/>
+    <circle cx="370" cy="88" r="22" fill="white"/>
+    <rect x="330" y="90" width="62" height="28" fill="white"/>
+
+    
+    <rect x="0" y="323" width="480" height="131" fill="#2185d0"/>
+
+    
+    <path d="M295 323 Q350 225 445 323" fill="#ffd323"/>
+
+    
+    
+    <rect x="320" y="234" width="60" height="56" fill="#fff8dc"/>
+    <polygon points="310,234 350,198 390,234" fill="#ff493f"/>
+    <rect x="350" y="265" width="14" height="25" fill="#222"/>
+    <circle cx="338" cy="253" r="8" fill="#1675c9"/>
+
+   
+    <rect x="405" y="242" width="10" height="50" fill="#333"/>
+    <circle cx="410" cy="220" r="28" fill="forestgreen"/>
+
+    
+   
+    <path d="M95 283 Q200 425 275 283" fill="blue"/>
+
+    
+    <rect x="188" y="118" width="12" height="167" fill="#222"/>
+
+   
+    <polygon points="200,120 200,180 245,135" fill="#ff3838"/>
+    <polygon points="200,175 200,265 270,265" fill="#ff454f"/>
+    <polygon points="188,175 188,265 100,265" fill="white"/>
+
+    
+    <circle cx="148" cy="309" r="11" fill="white"/>
+    <circle cx="188" cy="309" r="11" fill="white"/>
+    <circle cx="228" cy="309" r="11" fill="white"/>
+
+   
+
+</svg>
+<br>
+
+<h2>Formular</h2>
+<form action="uspjeh.html"  target="_blank" method="get">
+<input type="text" id="Name" placeholder="Unesi ime.." required> <br>
+<input type="password" id="password" placeholder="Unesi lozinku..." required> <br>
+<input type="color" id="colorpicker" required> <br>
+
+
+    <input type="submit" value="SUBMIT" >
+    <input type="reset" value="RESET">
+</form>
+
+</body>
+</html>
