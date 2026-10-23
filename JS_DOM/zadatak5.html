@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadatak5-JavaScript</title>
+</head>
+<body>
+    
+<button id="gumb">Prikaži poruku</button>
+<p id="poruka"></p>
+
+
+    <script>
+
+    const gumb = document.getElementById("gumb");
+    const poruka = document.getElementById("poruka");
+    gumb.onclick = function() {
+      poruka.textContent = "Uspješno ste kliknuli gumb!";
+    };
+  
+    </script>
+</body>
+</html>
