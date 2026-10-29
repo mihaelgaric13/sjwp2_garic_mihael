@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="poveznica" href="https://www.wikipedia.org/">Otvori Wikipediju</a>
+    <br />
+    <button id="gumb">Promijeni poveznicu</button>
+
+    <script>
+      const poveznica = document.getElementById("poveznica");
+      const gumb = document.getElementById("gumb");
+      gumb.onclick = function () {
+        if (poveznica.textContent === "Otvori Wikipediju") {
+          poveznica.setAttribute("href", "https://www.openstreetmap.org/");
+          poveznica.textContent = "Otvori OpenStreetMap";
+        } else {
+          poveznica.setAttribute("href", "https://www.wikipedia.org/");
+          poveznica.textContent = "Otvori Wikipediju";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="onemoguci">Onemogući</button>
+    <button id="omoguci">Omogući</button>
+    <button id="ciljniGumb">Klikni me</button>
+    <script>
+      const onemoguci = document.getElementById("onemoguci");
+      const omoguci = document.getElementById("omoguci");
+      const ciljniGumb = document.getElementById("ciljniGumb");
+
+      onemoguci.onclick = function () {
+        ciljniGumb.setAttribute("disabled", "");
+      };
+      omoguci.onclick = function () {
+        ciljniGumb.removeAttribute("disabled");
+      };
+    </script>
+  </body>
+</html>
