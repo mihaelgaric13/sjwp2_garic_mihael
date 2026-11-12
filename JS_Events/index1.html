@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brojač klikova</title>
+  </head>
+  <body>
+    <h1>Brojač klikova</h1>
+
+    <h2 id="broj">0</h2>
+
+    <button id="plus">+</button>
+    <button id="minus">−</button>
+    <button id="reset">Reset</button>
+
+    <p id="poruka"></p>
+
+    <script>
+      let broj = 0;
+
+      const prikazBroja = document.getElementById("broj");
+      const plus = document.getElementById("plus");
+      const minus = document.getElementById("minus");
+      const reset = document.getElementById("reset");
+      const poruka = document.getElementById("poruka");
+
+      plus.addEventListener("click", function () {
+        broj++;
+        prikaziBroj();
+      });
+
+      minus.addEventListener("click", function () {
+        broj--;
+        prikaziBroj();
+      });
+
+      reset.addEventListener("click", function () {
+        broj = 0;
+        prikaziBroj();
+      });
+
+      function prikaziBroj() {
+        prikazBroja.textContent = broj;
+
+        if (broj < 0) {
+          poruka.textContent = "Broj je negativan!";
+        } else {
+          poruka.textContent = "";
+        }
+      }
+    </script>
+  </body>
+</html>
