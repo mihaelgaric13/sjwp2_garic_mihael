@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Popis proizvoda</title>
+</head>
+<body>
+
+    <h2>Popis proizvoda</h2>
+
+    <button onclick="prikaziSve()">Svi proizvodi</button>
+    <button onclick="prikaziSkupe()">Skuplji od 50 €</button>
+    <button onclick="prikaziKategoriju('Elektronika')">
+        Elektronika
+    </button>
+    <button onclick="prikaziKategoriju('Odjeca')">
+        Odjeća
+    </button>
+
+    <h3>Proizvodi:</h3>
+    <ul id="popis"></ul>
+
+    <h3>Nazivi svih proizvoda:</h3>
+    <p id="nazivi"></p>
+
+    <script>
+
+     
+        let proizvodi = [
+            {
+                naziv: "Laptop",
+                cijena: 750,
+                kategorija: "Elektronika",
+                stanjeZalihe: 5
+            },
+            {
+                naziv: "Mobitel",
+                cijena: 450,
+                kategorija: "Elektronika",
+                stanjeZalihe: 10
+            },
+            {
+                naziv: "Majica",
+                cijena: 20,
+                kategorija: "Odjeca",
+                stanjeZalihe: 30
+            },
+            {
+                naziv: "Jakna",
+                cijena: 80,
+                kategorija: "Odjeca",
+                stanjeZalihe: 8
+            },
+            {
+                naziv: "Slusalice",
+                cijena: 60,
+                kategorija: "Elektronika",
+                stanjeZalihe: 15
+            },
+            {
+                naziv: "Hlace",
+                cijena: 55,
+                kategorija: "Odjeca",
+                stanjeZalihe: 12
+            }
+        ];
+
+        
+        function prikaziProizvode(polje) {
+
+            let popis = document.getElementById("popis");
+
+            popis.innerHTML = "";
+
+            polje.forEach(function(proizvod) {
+
+                let stavka = document.createElement("li");
+
+                stavka.textContent =
+                    proizvod.naziv + " - " +
+                    proizvod.cijena + " € - " +
+                    proizvod.kategorija + " - " +
+                    "Zaliha: " + proizvod.stanjeZalihe;
+
+                popis.appendChild(stavka);
+
+            });
+        }
+
+        function prikaziSve() {
+            prikaziProizvode(proizvodi);
+        }
+
+    
+        function prikaziSkupe() {
+
+            let skupiProizvodi = proizvodi.filter(function(proizvod) {
+                return proizvod.cijena > 50;
+            });
+
+            prikaziProizvode(skupiProizvodi);
+        }
+
+        let naziviProizvoda = proizvodi.map(function(proizvod) {
+            return proizvod.naziv;
+        });
+
+        document.getElementById("nazivi").textContent =
+            naziviProizvoda.join(", ");
+
+       
+        function prikaziKategoriju(kategorija) {
+
+            let filtriraniProizvodi = proizvodi.filter(function(proizvod) {
+                return proizvod.kategorija === kategorija;
+            });
+
+            prikaziProizvode(filtriraniProizvodi);
+        }
+
+    
+        prikaziSve();
+
+    </script>
+
+</body>
+</html>

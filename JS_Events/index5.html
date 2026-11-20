@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Semafor</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .semafor {
+            background-color: #333;
+            width: 100px;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+
+        .svjetlo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: gray;
+            margin: 10px auto;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Semafor</h2>
+
+    <div class="semafor">
+        <div id="crveno" class="svjetlo"></div>
+        <div id="zuto" class="svjetlo"></div>
+        <div id="zeleno" class="svjetlo"></div>
+    </div>
+
+    <button onclick="semafor.ukljuci()">Uključi</button>
+    <button onclick="semafor.iskljuci()">Isključi</button>
+
+    <br>
+
+    <button onclick="semafor.promijeniBoju('crvena')">
+        Crvena
+    </button>
+
+    <button onclick="semafor.promijeniBoju('zuta')">
+        Žuta
+    </button>
+
+    <button onclick="semafor.promijeniBoju('zelena')">
+        Zelena
+    </button>
+
+    <h3>Stanje semafora:</h3>
+    <p id="stanje"></p>
+
+    <script>
+
+        
+        let semafor = {
+
+            boja: "crvena",
+            trajanje: 5,
+            ukljucen: false,
+
+            
+            promijeniBoju: function(novaBoja) {
+
+                if (this.ukljucen === false) {
+                    alert("Ne možete promijeniti boju dok je semafor isključen!");
+                    return;
+                }
+
+                this.boja = novaBoja;
+
+                this.prikaziStanje();
+            },
+
+            ukljuci: function() {
+
+                this.ukljucen = true;
+
+                this.prikaziStanje();
+            },
+
+            
+            iskljuci: function() {
+
+                this.ukljucen = false;
+
+                this.prikaziStanje();
+            },
+
+            
+            prikaziStanje: function() {
+
+                document.getElementById("stanje").textContent =
+                    "Boja: " + this.boja +
+                    " | Trajanje: " + this.trajanje + " sekundi" +
+                    " | Uključen: " + (this.ukljucen ? "Da" : "Ne");
+
+                document.getElementById("crveno").style.backgroundColor = "gray";
+                document.getElementById("zuto").style.backgroundColor = "gray";
+                document.getElementById("zeleno").style.backgroundColor = "gray";
+
+                
+                if (this.ukljucen) {
+
+                    if (this.boja === "crvena") {
+                        document.getElementById("crveno").style.backgroundColor = "red";
+                    }
+
+                    else if (this.boja === "zuta") {
+                        document.getElementById("zuto").style.backgroundColor = "yellow";
+                    }
+
+                    else if (this.boja === "zelena") {
+                        document.getElementById("zeleno").style.backgroundColor = "green";
+                    }
+                }
+            }
+        };
+
+        
+        semafor.prikaziStanje();
+
+    </script>
+
+</body>
+</html>

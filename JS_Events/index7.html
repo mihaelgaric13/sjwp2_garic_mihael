@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogodi broj</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f0f0;
+        }
+
+        .igra {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            margin: auto;
+            border-radius: 15px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #poruka {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="igra">
+    <h1>Pogodi broj!</h1>
+
+    <p>Pogodi broj između 1 i 100.</p>
+
+    <input type="number" id="unos"
+           min="1" max="100" placeholder="Upiši broj">
+
+    <button id="provjeri">Provjeri</button>
+
+    <p id="poruka">Sretno!</p>
+
+    <p>Broj pokušaja: <span id="brojac">0</span></p>
+
+    <button id="novaIgra">Nova igra</button>
+</div>
+
+<script>
+    let zamisljeniBroj;
+    let brojPokusaja;
+    let gotovo;
+
+   
+    function pokreniIgru() {
+        zamisljeniBroj = Math.floor(Math.random() * 100) + 1;
+        brojPokusaja = 0;
+        gotovo = false;
+
+        document.getElementById("brojac").textContent = 0;
+        document.getElementById("poruka").textContent = "Sretno!";
+        document.getElementById("unos").value = "";
+        document.getElementById("unos").disabled = false;
+        document.getElementById("provjeri").disabled = false;
+    }
+
+    
+    function provjeriBroj() {
+        if (gotovo) return;
+
+        let unos = Number(document.getElementById("unos").value);
+        let poruka = document.getElementById("poruka");
+
+        if (unos < 1 || unos > 100 ||
+            document.getElementById("unos").value === "") {
+            poruka.textContent = "Unesi broj od 1 do 100!";
+            return;
+        }
+
+        brojPokusaja++;
+
+        document.getElementById("brojac").textContent = brojPokusaja;
+
+        if (unos < zamisljeniBroj) {
+            poruka.textContent = "Zamišljeni broj je VEĆI!";
+        }
+        else if (unos > zamisljeniBroj) {
+            poruka.textContent = "Zamišljeni broj je MANJI!";
+        }
+        else {
+            poruka.textContent =
+                "Bravo! Pogodio si broj " + zamisljeniBroj +
+                " u " + brojPokusaja + " pokušaja!";
+
+            gotovo = true;
+
+            document.getElementById("unos").disabled = true;
+            document.getElementById("provjeri").disabled = true;
+        }
+
+        document.getElementById("unos").value = "";
+    }
+
+    
+    document.getElementById("provjeri").addEventListener(
+        "click", provjeriBroj
+    );
+
+
+    document.getElementById("unos").addEventListener(
+        "keydown", function(event) {
+            if (event.key === "Enter") {
+                provjeriBroj();
+            }
+        }
+    );
+
+    
+    document.getElementById("novaIgra").addEventListener(
+        "click", pokreniIgru
+    );
+
+   
+    pokreniIgru();
+
+</script>
+
+</body>
+</html>

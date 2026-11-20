@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+</head>
+<body>
+
+    <h2>Kalkulator</h2>
+
+    <input type="number" id="broj1" placeholder="Prvi broj">
+
+    <select id="operacija">
+        <option value="zbroji">Zbrajanje (+)</option>
+        <option value="oduzmi">Oduzimanje (-)</option>
+        <option value="pomnozi">Množenje (*)</option>
+        <option value="podijeli">Dijeljenje (/)</option>
+    </select>
+
+    <input type="number" id="broj2" placeholder="Drugi broj">
+
+    <button onclick="izracunaj()">Izračunaj</button>
+
+    <p id="rezultat"></p>
+
+    <script>
+       
+        function zbroji(a, b) {
+            return a + b;
+        }
+
+        function oduzmi(a, b) {
+            return a - b;
+        }
+
+        function pomnozi(a, b) {
+            return a * b;
+        }
+
+        function podijeli(a, b) {
+            if (b === 0) {
+                throw new Error("Nije moguće dijeliti s nulom!");
+            }
+
+            return a / b;
+        }
+
+        function izvrsi(a, b, operacija) {
+            return operacija(a, b);
+        }
+
+        function izracunaj() {
+            let a = document.getElementById("broj1").value;
+            let b = document.getElementById("broj2").value;
+
+            let izbor = document.getElementById("operacija").value;
+            let rezultat = document.getElementById("rezultat");
+
+            if (a === "" || b === "") {
+                rezultat.textContent = "Unesite oba broja!";
+                return;
+            }
+
+            a = Number(a);
+            b = Number(b);
+
+            if (!Number.isFinite(a) || !Number.isFinite(b)) {
+                rezultat.textContent = "Neispravan unos!";
+                return;
+            }
+
+            let funkcija;
+
+            if (izbor === "zbroji") {
+                funkcija = zbroji;
+            } else if (izbor === "oduzmi") {
+                funkcija = oduzmi;
+            } else if (izbor === "pomnozi") {
+                funkcija = pomnozi;
+            } else if (izbor === "podijeli") {
+                funkcija = podijeli;
+            }
+
+            try {
+                let rezultatRacuna = izvrsi(a, b, funkcija);
+                rezultat.textContent = "Rezultat: " + rezultatRacuna;
+            } catch (greska) {
+                rezultat.textContent = greska.message;
+            }
+        }
+    </script>
+
+</body>
+</html>

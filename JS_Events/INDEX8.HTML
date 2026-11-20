@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Reakcijski test</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-top: 70px;
+        }
+
+        .igra {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        #povrsina {
+            background-color: red;
+            height: 200px;
+            margin: 20px 0;
+            border-radius: 10px;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #poruka {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="igra">
+
+    <h1>Reakcijski test</h1>
+
+    <p>
+        Klikni na Pokreni i čekaj da površina postane zelena.
+        Zatim klikni što brže!
+    </p>
+
+    <div id="povrsina">ČEKAJ...</div>
+
+    <button id="pokreni">Pokreni</button>
+    <button id="ponovi">Ponovi</button>
+
+    <p id="poruka">Spreman?</p>
+
+</div>
+
+<script>
+
+    let timer;
+    let vrijemePocetka;
+    let aktivan = false;
+    let cekaSe = false;
+
+    const povrsina = document.getElementById("povrsina");
+    const poruka = document.getElementById("poruka");
+    const pokreni = document.getElementById("pokreni");
+    const ponovi = document.getElementById("ponovi");
+
+
+   
+    function pokreniTest() {
+
+        if (aktivan || cekaSe) {
+            return;
+        }
+
+        aktivan = true;
+        cekaSe = true;
+
+        povrsina.style.backgroundColor = "red";
+        povrsina.textContent = "ČEKAJ...";
+        poruka.textContent = "Pričekaj promjenu boje!";
+
+        
+        let cekanje = Math.floor(Math.random() * 4000) + 1000;
+
+        timer = setTimeout(function() {
+
+            povrsina.style.backgroundColor = "green";
+            povrsina.textContent = "KLIKNI!";
+            
+            vrijemePocetka = Date.now();
+            cekaSe = false;
+
+        }, cekanje);
+    }
+
+
+    
+    function klikNaPovrsinu() {
+
+        
+        if (cekaSe) {
+
+            clearTimeout(timer);
+
+            aktivan = false;
+            cekaSe = false;
+
+            povrsina.style.backgroundColor = "red";
+            povrsina.textContent = "PRERANO!";
+
+            poruka.textContent = "Kliknuo si prerano! Pokušaj ponovno.";
+
+            return;
+        }
+
+        
+        if (!aktivan) {
+            return;
+        }
+
+        
+        let vrijemeReakcije = Date.now() - vrijemePocetka;
+
+        aktivan = false;
+
+        povrsina.textContent = "GOTOVO!";
+        poruka.textContent =
+            "Tvoje vrijeme reakcije je " +
+            vrijemeReakcije + " ms!";
+    }
+
+
+    
+    function ponoviTest() {
+
+        
+        clearTimeout(timer);
+
+        aktivan = false;
+        cekaSe = false;
+
+        povrsina.style.backgroundColor = "red";
+        povrsina.textContent = "ČEKAJ...";
+
+        poruka.textContent = "Spreman za novi pokušaj?";
+    }
+
+
+    
+    pokreni.addEventListener("click", pokreniTest);
+
+    povrsina.addEventListener("click", klikNaPovrsinu);
+
+    ponovi.addEventListener("click", ponoviTest);
+
+</script>
+
+</body>
+</html>
